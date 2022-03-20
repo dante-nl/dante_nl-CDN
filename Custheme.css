@@ -1,0 +1,72 @@
+.chatContent-3KubbW[aria-label*="⎡🕐⎦share-your-custime"] .embed-hKpSrO {
+    display: none
+}
+
+a[href*="https://beta.dantenl.tk/"] {
+    font-size: 0;
+}
+
+
+a[href*="https://beta.dantenl.tk/"]::after {
+	content: "Open Custime";
+	background-color: #A0C4FF;
+	font-size: 16px;
+	border: none;
+	color: #607699;
+	padding: 5px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	border-radius: 24px;
+}
+
+a[href*="http://beta.dantenl.tk/"]:hover::after {
+	color: #A0C4FF;
+	background-color: #607699;
+}
+
+a[href*="http://beta.dantenl.tk/"] {
+    font-size: 0;
+}
+
+
+a[href*="http://beta.dantenl.tk/"]::after {
+	content: "Open Custime";
+	background-color: #A0C4FF;
+	font-size: 16px;
+	border: none;
+	color: #607699;
+	padding: 5px 20px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	margin: 4px 2px;
+	border-radius: 24px;
+}
+
+a[href*="http://beta.dantenl.tk/"]:hover::after {
+	color: #A0C4FF;
+	background-color: #607699;
+}
+
+
+.chatContent-3KubbW[aria-label*="⎡🕐⎦share-your-custime"] .messageContent-2t3eCI {
+	background-color: var(--background-secondary);
+	width: 75% !important;
+	height: 10% !important;
+	padding: 5px 20px;
+	margin-left: 0;
+	border-radius: 8px;
+}
+
+.side-2ur1Qk > div {
+    order: -1;
+}
+.side-2ur1Qk > div[data-item-id="pc-general"],
+.side-2ur1Qk > div[data-item-id="pc-general"] ~ div {
+    order: 2;
+}
+.side-2ur1Qk > div[data-item-id="theme-toggler"] {
+    order: 1 !important;
+}
