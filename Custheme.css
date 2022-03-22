@@ -1,3 +1,21 @@
+/*
+
+░█████╗░██╗░░░██╗░██████╗████████╗██╗░░██╗███████╗███╗░░░███╗███████╗
+██╔══██╗██║░░░██║██╔════╝╚══██╔══╝██║░░██║██╔════╝████╗░████║██╔════╝
+██║░░╚═╝██║░░░██║╚█████╗░░░░██║░░░███████║█████╗░░██╔████╔██║█████╗░░
+██║░░██╗██║░░░██║░╚═══██╗░░░██║░░░██╔══██║██╔══╝░░██║╚██╔╝██║██╔══╝░░
+╚█████╔╝╚██████╔╝██████╔╝░░░██║░░░██║░░██║███████╗██║░╚═╝░██║███████╗
+░╚════╝░░╚═════╝░╚═════╝░░░░╚═╝░░░╚═╝░░╚═╝╚══════╝╚═╝░░░░░╚═╝╚══════╝
+
+To import the Custheme stylesheet for the Custheme Discord server, past the text
+from the line under this, with the "@import" tag, in the Quick CSS to 
+automatically apply the latest settings, without even knowing it!
+
+© 2022 dante_nl. Copying is not allowed without permission.
+*/
+
+/* @import url("https://cdn.dantenl.tk/custheme.css") */
+
 .chatContent-3KubbW[aria-label*="⎡🕐⎦share-your-custime"] .embed-hKpSrO {
     display: none
 }
@@ -21,7 +39,7 @@ a[href*="https://beta.dantenl.tk/"]::after {
 	border-radius: 24px;
 }
 
-a[href*="http://beta.dantenl.tk/"]:hover::after {
+a[href*="https://beta.dantenl.tk/"]:hover::after {
 	color: #A0C4FF;
 	background-color: #607699;
 }
@@ -53,11 +71,21 @@ a[href*="http://beta.dantenl.tk/"]:hover::after {
 
 .chatContent-3KubbW[aria-label*="⎡🕐⎦share-your-custime"] .messageContent-2t3eCI {
 	background-color: var(--background-secondary);
-	width: 75% !important;
-	height: 10% !important;
+	border: 1px solid var(--background-tertiary);
+	width: 75%;
+	height: 10%;
 	padding: 5px 20px;
 	margin-left: 0;
 	border-radius: 8px;
+}
+
+.chatContent-3KubbW[aria-label*="⎡🕐⎦share-your-custime"] .compact-2Nkcau .messageContent-2t3eCI {
+	display: block;
+	/* text-indent: -4rem; */
+}
+
+.chatContent-3KubbW[aria-label*="⎡🕐⎦share-your-custime"] .compact-2Nkcau .contents-2MsGLg {
+	text-indent: -4rem;
 }
 
 .side-2ur1Qk > div {
