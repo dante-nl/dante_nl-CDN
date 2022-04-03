@@ -115,7 +115,6 @@ def CheckForUpdates():
                     return
                 log("Updating main PyPlace file")
                 open('PyPlace.py', 'wb').write(r.content)
-                os.system("python PyPlace.py")
                 print(f"{bcolors.OKGREEN}The latest version of PyPlace is now ready in {bcolors.BOLD}PyPlace.py!{bcolors.END}")
                 NotAnswered2 = True
                 while NotAnswered2 == True:
@@ -123,6 +122,7 @@ def CheckForUpdates():
                     Answer2 = Answer2.lower()
                     if Answer2 == "y":
                         print(f"{bcolors.INFO}Running PyPlace.py!{bcolors.END}")
+                        os.system("python PyPlace.py")
                         NotAnswered2 = False
                         return
                     elif Answer2 == "n":
