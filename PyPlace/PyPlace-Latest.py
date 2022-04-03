@@ -109,7 +109,7 @@ def CheckForUpdates():
                 NotAnswered = False
                 print(f"{bcolors.INFO}Downloading latest version of PyPlace...{bcolors.END}")
                 log("Retrieving latest version of PyPlace...")
-                r = requests.get("https://cdn.dantenl.tk/PyPlace/PyPlaces-Latest.py", allow_redirects=True)
+                r = requests.get("https://cdn.dantenl.tk/PyPlace/PyPlace-Latest.py", allow_redirects=True)
                 if not r.ok:
                     print(f"{bcolors.FAIL}Could not get the PyPlace file!")
                     return
