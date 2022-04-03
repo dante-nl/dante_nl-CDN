@@ -46,7 +46,7 @@ DoNotLogOutput = False
 # This is the version of PyPlace and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0
+Version = 0.1
 
 
 # ————————————————————————————
@@ -58,7 +58,6 @@ from os.path import exists
 import requests
 import json
 import os
-import sys
 
 
 # ————————————————————————————
