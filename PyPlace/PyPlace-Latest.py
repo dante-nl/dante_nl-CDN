@@ -37,7 +37,7 @@ CheckForUpdates = True
 # is doing? This might clutter the output
 # with various small things, such as when
 # a file is created.
-DoNotLogOutput = False
+DoNotLogOutput = True
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
 # Default: 0.1 (changes every version)
@@ -114,6 +114,8 @@ def CheckForUpdates():
                     print(f"{bcolors.FAIL}Could not get the PyPlace file!")
                     return
                 log("Updating main PyPlace file")
+                open('PyPlace.py', 'wb').write(r.content)
+                os.system("python PyPlace.py")
                 print(f"{bcolors.OKGREEN}The latest version of PyPlace is now ready in {bcolors.BOLD}PyPlace.py!{bcolors.END}")
                 NotAnswered2 = True
                 while NotAnswered2 == True:
@@ -121,8 +123,6 @@ def CheckForUpdates():
                     Answer2 = Answer2.lower()
                     if Answer2 == "y":
                         print(f"{bcolors.INFO}Running PyPlace.py!{bcolors.END}")
-                        open('PyPlace.py', 'wb').write(r.content)
-                        os.system("python PyPlace.py")
                         NotAnswered2 = False
                         return
                     elif Answer2 == "n":
