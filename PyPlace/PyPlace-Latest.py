@@ -46,7 +46,7 @@ DoNotLogOutput = True
 # This is the version of PyPlace and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.1
+Version = 0
 
 
 # ————————————————————————————
@@ -109,7 +109,7 @@ def CheckForUpdates():
                 NotAnswered = False
                 print(f"{bcolors.INFO}Downloading latest version of PyPlace...{bcolors.END}")
                 log("Retrieving latest version of PyPlace...")
-                r = requests.get("https://cdn.dantenl.tk/PyPlace/PyPlace-Latest.py", allow_redirects=True)
+                r = requests.get("https://cdn.dantenl.tk/PyPlace/PyPlaces-Latest.py", allow_redirects=True)
                 if not r.ok:
                     print(f"{bcolors.FAIL}Could not get the PyPlace file!")
                     return
@@ -121,8 +121,8 @@ def CheckForUpdates():
                     Answer2 = input("Would you like to run it? (y/n) ")
                     Answer2 = Answer2.lower()
                     if Answer2 == "y":
-                        print(f"{bcolors.INFO}Running PyPlace.py!{bcolors.END}")
-                        os.system("python PyPlace.py")
+                        print(f"{bcolors.INFO}Attempting to run PyPlace.py...{bcolors.END}")
+                        os.system("python3 PyPlace.py")
                         NotAnswered2 = False
                         return
                     elif Answer2 == "n":
