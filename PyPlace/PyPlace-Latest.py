@@ -58,6 +58,7 @@ from os.path import exists
 import requests
 import json
 import os
+import sys
 
 
 # ————————————————————————————
@@ -124,7 +125,7 @@ def CheckForUpdates():
                         print(f"{bcolors.INFO}Attempting to run PyPlace.py...{bcolors.END}")
                         os.system("python3 PyPlace.py")
                         NotAnswered2 = False
-                        return
+                        sys.exit(1)
                     elif Answer2 == "n":
                         print(f"Continuing with current version. {bcolors.BOLD}NOTE:{bcolors.END} Next time you start PyPlace.py, it will be on the latest version!")
                         NotAnswered2 = False
