@@ -1,0 +1,9 @@
+{
+	"apps": {
+		"Custime Advanced": {
+			"name": "Custime Advanced Editor for Python",
+			"url": "https://cdn.dantenl.tk/pyplace/custime.py",
+			"author": "dante_nl"
+		}
+	}
+}
