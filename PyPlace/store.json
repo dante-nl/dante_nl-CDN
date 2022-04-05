@@ -4,6 +4,11 @@
 			"name": "Custime Advanced Editor for Python",
 			"url": "https://cdn.dantenl.tk/pyplace/custime.py",
 			"author": "dante_nl"
+		},
+		"Test": {
+			"name": "This is for testing purposes.",
+			"url": "https://hi.test",
+			"author": "Example"
 		}
 	}
 }
