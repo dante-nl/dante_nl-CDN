@@ -1,8 +1,8 @@
 {
 	"apps": {
-		"Custime Advanced": {
-			"name": "Custime Advanced Editor for Python",
-			"url": "https://cdn.dantenl.tk/pyplace/store%20files/custime.py",
+		"Simple Password Gen": {
+			"name": "Simple Password Generator",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/password-gen.py",
 			"author": "dante_nl"
 		},
 		"Rock, paper, scissors": {
