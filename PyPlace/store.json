@@ -2,13 +2,13 @@
 	"apps": {
 		"Custime Advanced": {
 			"name": "Custime Advanced Editor for Python",
-			"url": "https://cdn.dantenl.tk/pyplace/custime.py",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/custime.py",
 			"author": "dante_nl"
 		},
-		"Test": {
-			"name": "This is for testing purposes.",
-			"url": "https://hi.test",
-			"author": "Example"
+		"Rock, paper, scissors": {
+			"name": "Rock, paper, scissors",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/rps.py",
+			"author": "dante_nl"
 		}
 	}
 }
