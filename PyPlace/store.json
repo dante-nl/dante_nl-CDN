@@ -9,6 +9,11 @@
 			"name": "Rock, paper, scissors",
 			"url": "https://cdn.dantenl.tk/pyplace/store%20files/rps.py",
 			"author": "dante_nl"
+		},
+		"routinehub.py": {
+			"name": "routinehub.py — RoutineHub in Python",
+			"url": "https://routinehubpy.dantenl.tk/routinehub.py",
+			"author": "dante_nl"
 		}
 	}
 }
