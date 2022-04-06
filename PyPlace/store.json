@@ -14,6 +14,11 @@
 			"name": "routinehub.py — RoutineHub in Python",
 			"url": "https://routinehubpy.dantenl.tk/routinehub.py",
 			"author": "dante_nl"
+		},
+		"Hangman": {
+			"name": "Hangman",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/hangman.py",
+			"author": "dante_nl"
 		}
 	}
 }
