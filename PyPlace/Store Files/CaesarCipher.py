@@ -18,7 +18,7 @@ def caesar(start_text, shift_amount, cipher_direction):
     
 	print(f"Here's the {cipher_direction}d result: {end_text}")
 
-print(art.logo)
+print(CaesarCipher_art.logo)
 LoopProgram = True
 while LoopProgram == True:
 	direction = input("Type 'encode' to encrypt, type 'decode' to decrypt:\n")
