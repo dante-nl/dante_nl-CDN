@@ -48,7 +48,7 @@ if not CaesarCipherMain.ok:
 	print(f"{bcolors.FAIL}Error:{bcolors.END} Could not download the Python file! Status code: {CaesarCipherMain.status_code}")
 	sys.exit(0)
 
-print(f"{bcolors.OKGREEN}Downloaded the main file!")
+print(f"{bcolors.OKGREEN}Downloaded the main file!{bcolors.END}")
 MainFileName = input("What do you want to call the main file? (leave empty for default) ") or "Caesar Cipher"
 InvalidAnswer = True
 
@@ -71,7 +71,7 @@ while InvalidAnswer == True:
 			InvalidAnswer = True
 
 print(f"{bcolors.INFO}Installing Python app...{bcolors.END}")
-open(MainFileName, 'wb').write(CaesarCipherMain.content)
+open(f"{MainFileName}.py", 'wb').write(CaesarCipherMain.content)
 
 with open('applications.json') as ApplicationsFile:
 	data2 = json.load(ApplicationsFile)
@@ -96,7 +96,7 @@ if not CaesarCipherExtra.ok:
 	print(f"{bcolors.FAIL}Error:{bcolors.END} Could not download the Python file! Status code: {CaesarCipherMain.status_code}")
 	sys.exit(0)
 
-open("CaesarCipher_art", 'wb').write(CaesarCipherExtra.content)
+open("CaesarCipher_art.py", 'wb').write(CaesarCipherExtra.content)
 
 print(f"{bcolors.OKGREEN}Extra file installed!{bcolors.END}")
 print(f"It can now be opened via the \"Open a PyPlace app\" feature on the PyPlace homepage! {bcolors.BOLD}You can delete this file.{bcolors.END} (recommended via the PyPlace settings)")
