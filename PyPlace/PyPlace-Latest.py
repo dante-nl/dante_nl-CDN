@@ -49,13 +49,13 @@ DoNotLogOutput = True
 DoINeedToRun = True
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.2 (changes every version)
+# Default: 0.3 (changes every version)
 # Possible options: any number
 
 # This is the version of PyPlace and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.2
+Version = 0.3
 
 
 # ————————————————————————————
@@ -213,7 +213,7 @@ def ExecuteFile():
             elif exists(f"{json_data['apps'][item]['file_name']}") == True:
                os.system(f"{PyCommand} {json_data['apps'][item]['file_name']}")
                print(f"{bcolors.OKGREEN}File executed{bcolors.END}")
-               input("Input any text to continue to the home page: ")
+               input("Press [ENTER] to return to the home menu. ")
 
             else:
                 print(
@@ -519,7 +519,6 @@ def Settings():
                     NotAnswered = False
 
         elif Answer == "4":
-            # ! Coding here now! (about)
             NotAnswered = False
             with open('setup.json') as SetupFile:
                 data = json.load(SetupFile)
@@ -539,7 +538,7 @@ be as easy to use, so everyone can use it! :D
 
 {bcolors.BOLD}Your version:{bcolors.END} {Version}
 {bcolors.BOLD}Your setup version:{bcolors.END} {data["SetupVersion"]}""")
-            input("Input any text to continue to the home page: ")
+            input("Press [ENTER] to return to the home menu. ")
         elif Answer == "c":
             NotAnswered = False
             return
@@ -613,14 +612,15 @@ if exists("setup.json") == True:
         PyPlaceRegular()
 else:
     log("setup.json does not exist, launching setup...")
-    PythonCommand = input("What command do you use to run a Python file in your terminal? ") or "python3"
+    print("What command do you use to run a Python file in your terminal?")
     print("Leave empty to set it to the default (python3)")
     print(f"{bcolors.BOLD}NOTE: {bcolors.END}You can change this later in the settings.")
+    PythonCommand = input("> ") or "python3"
 
     print(f"{bcolors.INFO}Setting up PyPlace...{bcolors.END}")
 
     AppDict = {
-        "_NOTE": "DO NOT DELETE THIS FILE! This file is crucial for downloading, opening and deleting apps!",
+        "_NOTE": "When you delete this file, PyPlace can no longer interact with any downloaded applications.",
         "apps": {
         }
     }
@@ -637,7 +637,7 @@ else:
         "PythonCommand": f"{PythonCommand}"
     }
 
-    SetupDictStr = json.dumps(SetupDict)
+    SetupDictStr = json.dumps(SetupDict, indent=4, separators=(',', ': '))
     with open('setup.json', 'w') as SetupJSON:
         SetupJSON.write(SetupDictStr)
         log("File created: setup.json")
