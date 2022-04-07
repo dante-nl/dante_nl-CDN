@@ -80,6 +80,8 @@ with open('applications.json') as ApplicationsFile:
 		f"{MainFileName}": {
 			"name": f"{MainFileName}",
 			"file_name": f"{MainFileName}.py",
+			"author": "dante_nl",
+			"StoreApp": "true"
 		}
 	})
 
