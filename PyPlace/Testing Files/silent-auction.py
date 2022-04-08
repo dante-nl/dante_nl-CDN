@@ -1,5 +1,5 @@
 import os
-import art
+import sa_art
 
 clear = lambda: os.system('cls' if os.name in ('nt', 'dos') else 'clear')
 
