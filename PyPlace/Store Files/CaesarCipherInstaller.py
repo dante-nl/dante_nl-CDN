@@ -20,6 +20,7 @@
 
 # THIS IS ONLY THE INSTALLER!
 import re
+import os
 import sys
 import json
 import requests
@@ -101,4 +102,34 @@ if not CaesarCipherExtra.ok:
 open("CaesarCipher_art.py", 'wb').write(CaesarCipherExtra.content)
 
 print(f"{bcolors.OKGREEN}Extra file installed!{bcolors.END}")
-print(f"It can now be opened via the \"Open a PyPlace app\" feature on the PyPlace homepage! {bcolors.BOLD}You can delete this file.{bcolors.END} (recommended via the PyPlace settings)")
+print(f"It can now be opened via the \"Open a PyPlace app\" feature on the PyPlace homepage!")
+InvalidAnswer = True
+while InvalidAnswer == True:
+	DeleteFile = input("Do you want to delete this file? (y/n) ").lower()
+	if DeleteFile == "y":
+		InvalidAnswer = False
+		FileName = os.path.splitext(os.path.basename(__file__))[0]
+		with open('applications.json') as AppsFile:
+			json_data = json.load(AppsFile)
+
+		print(f"{bcolors.INFO}Attempting to delete {FileName}.py...{bcolors.END}")
+		if os.path.exists(f"{FileName}.py"):
+			os.remove(f"{FileName}.py")
+			ItemCount = 0
+			for item in json_data["apps"]:
+				if json_data["apps"][item]["file_name"] == f"{FileName}.py":
+					ItemNeeded = item
+				else:
+					ItemNeeded = None
+			if ItemNeeded != None:
+				del json_data["apps"][ItemNeeded]
+				with open('applications.json', 'w') as data_file:
+					data = json.dump(json_data, data_file,
+										indent=4,
+										separators=(',', ': '))
+			print(f"{bcolors.OKGREEN}Deleted the installer!{bcolors.END}")
+	elif DeleteFile == "n":
+		print(f"You can always delete this app via the PyPlace settings! {bcolors.BOLD}This program will now be terminated.{bcolors.END}")
+		InvalidAnswer = False
+	else:
+		print(f"{bcolors.FAIL}Error:{bcolors.END} I'm not sure what you mean with \"{DeleteFile}\".")
