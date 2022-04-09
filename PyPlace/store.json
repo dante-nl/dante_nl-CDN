@@ -24,6 +24,11 @@
 			"name": "Caesar Cipher (installer)",
 			"url": "https://cdn.dantenl.tk/pyplace/store%20files/CaesarCipherInstaller.py",
 			"author": "dante_nl"
+		},
+		"Calculator": {
+			"name": "Simple Calculator",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/calculator.py",
+			"author": "dante_nl"
 		}
 	}
 }
