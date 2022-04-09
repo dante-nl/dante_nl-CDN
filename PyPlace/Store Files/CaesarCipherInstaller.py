@@ -16,7 +16,7 @@
 
 
 # 🄱🅈 🄳🄰🄽🅃🄴_🄽🄻
-# From "100 days of Python" by Angela Yu
+# From "100 days of Python" by Dr. Angela Yu
 
 # THIS IS ONLY THE INSTALLER!
 import re
@@ -50,10 +50,10 @@ if not CaesarCipherMain.ok:
 	sys.exit(0)
 
 print(f"{bcolors.OKGREEN}Downloaded the main file!{bcolors.END}")
-MainFileName = input("What do you want to call the main file? (leave empty for default) ") or "Caesar Cipher"
 InvalidAnswer = True
 
 while InvalidAnswer == True:
+	MainFileName = input("What do you want to call the main file? (leave empty for default) ") or "Caesar Cipher"
 	FileExtensionCheck = MainFileName[-3:]
 	if FileExtensionCheck == ".py":
 		MainFileName = MainFileName.replace(".py", "")
@@ -115,19 +115,18 @@ while InvalidAnswer == True:
 		print(f"{bcolors.INFO}Attempting to delete {FileName}.py...{bcolors.END}")
 		if os.path.exists(f"{FileName}.py"):
 			os.remove(f"{FileName}.py")
-			ItemCount = 0
+			ItemNeeded = None
 			for item in json_data["apps"]:
 				if json_data["apps"][item]["file_name"] == f"{FileName}.py":
 					ItemNeeded = item
-				else:
-					ItemNeeded = None
 			if ItemNeeded != None:
 				del json_data["apps"][ItemNeeded]
 				with open('applications.json', 'w') as data_file:
 					data = json.dump(json_data, data_file,
 										indent=4,
 										separators=(',', ': '))
-			print(f"{bcolors.OKGREEN}Deleted the installer!{bcolors.END}")
+		print(f"{bcolors.OKGREEN}Deleted the installer!{bcolors.END}")
+		print()
 	elif DeleteFile == "n":
 		print(f"You can always delete this app via the PyPlace settings! {bcolors.BOLD}This program will now be terminated.{bcolors.END}")
 		InvalidAnswer = False
