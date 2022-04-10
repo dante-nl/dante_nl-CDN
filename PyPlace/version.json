@@ -1,4 +1,4 @@
 {
-	"version": 0.4,
-	"release_notes": "- Replaced spaces with tabs"
+	"version": 0.5,
+	"release_notes": "- Added a Replit mode \n- Added a new store, the Experiment Store! \n- Updated the UI a bit at the place where you run apps"
 }
