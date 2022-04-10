@@ -19,13 +19,13 @@
 # a bunch of applications at once.
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.2 (changes	every version)
+# Default: 0.3 (changes	every version)
 # Possible options:	any	number
 
 # This is the version of PyPlace - Bulk Delete and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.2
+Version = 0.3
 
 # ————————————————————————————
 
@@ -82,7 +82,7 @@ def update():
 		print(
 			f"Your current version ({Version}) is no longer the latest version! The latest one is {data['version']}")
 		print(f"""Here are the release notes:
-	{data["release_notes"]}
+{data["release_notes"]}
 		""")
 		NotAnswered = True
 		while NotAnswered == True:
@@ -97,22 +97,22 @@ def update():
 				if not r.ok:
 					print(f"{bcolors.FAIL}Error:{bcolors.END} Could not get the PyPlace file! Status code: {r.status_code}")
 					return
-				open('PyPlace.py', 'wb').write(r.content)
+				open('{FileName}', 'wb').write(r.content)
 				print(
-					f"{bcolors.OKGREEN}The latest version of PyPlace is now ready in {bcolors.BOLD}PyPlace.py!{bcolors.END}")
+					f"{bcolors.OKGREEN}The latest version of PyPlace is now ready in {bcolors.BOLD}{FileName}!{bcolors.END}")
 				NotAnswered2 = True
 				while NotAnswered2 == True:
 					Answer2 = input("Would you like to run it? (y/n) ")
 					Answer2 = Answer2.lower()
 					if Answer2 == "y":
 						print(
-							f"{bcolors.INFO}Attempting to run PyPlace.py...{bcolors.END}")
-						os.system(f"{PyCommand} PyPlace.py")
+							f"{bcolors.INFO}Attempting to run {FileName}...{bcolors.END}")
+						os.system(f"{PyCommand} {FileName}")
 						NotAnswered2 = False
 						sys.exit(1)
 					elif Answer2 == "n":
 						print(
-							f"Continuing with current version. {bcolors.BOLD}NOTE:{bcolors.END} Next time you start PyPlace.py, it will be on the latest version!")
+							f"Continuing with current version. {bcolors.BOLD}NOTE:{bcolors.END} Next time you start {FileName}, it will be on the latest version!")
 						NotAnswered2 = False
 						return
 					else:
@@ -153,9 +153,10 @@ and experimental thing for PyPlace, that allows you to delete
 a bunch of applications at once.
 """)
 
+FileName = f"{os.path.splitext(os.path.basename(__file__))[0]}.py"
+
 update()
 
-FileName = f"{os.path.splitext(os.path.basename(__file__))[0]}.py"
 
 print(f"{bcolors.WARNING}■{bcolors.END}: Experimental application")
 print(f"{bcolors.OKCYAN}■{bcolors.END}: Application downloaded from the PyPlace store")
