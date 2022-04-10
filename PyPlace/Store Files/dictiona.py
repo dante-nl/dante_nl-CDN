@@ -15,6 +15,7 @@
 # Merriam-Webster API.
 
 import json
+import sys
 import urllib.request
 import re
 
@@ -90,6 +91,6 @@ while RunScript == True:
 		elif RunAgain.lower() == "n":
 			InvalidAnswer = False
 			RunAgain = False
-			print()
+			sys.exit(0)
 		else:
 			print(f"{bcolors.FAIL}Error: {bcolors.END}I'm not sure what you mean with {RunAgain}")
