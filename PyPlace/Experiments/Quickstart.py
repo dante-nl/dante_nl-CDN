@@ -90,8 +90,12 @@ def quickstart():
 	download("Calculator", "Calculator.py", StoreRequestJSON)
 	download("Rock, paper, scissors", "Rock-Paper-Scissors.py", StoreRequestJSON)
 	download("Hangman", "Hangman.py", StoreRequestJSON)
-	download("PyPlace Bulk Delete [BETA]", "PyPlace-bulk-delete.py", StoreRequestJSON)
+	try:
+		download("PyPlace Bulk Delete", "PyPlace-bulk-delete.py", StoreRequestJSON)
+	except KeyError:
+		print(f"{bcolors.INFO}NOTE:{bcolors.END} The PyPlace Bulk Delete app can not be installed yet, as it's still an experiment. You can download it from the experiment store in PyPlace.")
 
+	print(exists("pyplace.py"))
 	if exists("pyplace.py") == False:
 		print(f"{bcolors.INFO}Downloading and installing PyPlace...{bcolors.END}")
 		r = requests.get("https://cdn.dantenl.tk/PyPlace/PyPlace-Latest.py", allow_redirects=True)
