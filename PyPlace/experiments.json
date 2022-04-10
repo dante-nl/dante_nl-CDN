@@ -3,6 +3,10 @@
 		"PyPlace Quickstart": {
 			"name": "PyPlace Quickstart",
 			"url": "https://cdn.dantenl.tk/pyplace/experiments/quickstart.py"
+		},
+		"PyPlace - Bulk Delete": {
+			"name": "PyPlace - Bulk Delete",
+			"url": "https://cdn.dantenl.tk/pyplace/experiments/pyplace-bd-latest.py"
 		}
 	}
 }
