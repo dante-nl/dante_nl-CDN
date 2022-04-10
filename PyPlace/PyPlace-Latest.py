@@ -27,6 +27,8 @@
 # Do you want to check for updates when the
 # program is ran? You can always check for
 # updates via the advanced options.
+# 𝗡𝗢𝗧𝗘: When Replit mode is enabled,
+# this setting is ignored.
 CheckForUpdates = True
 
 # 𝗘𝗻𝗮𝗯𝗹𝗲 𝗼𝗿 𝗱𝗶𝘀𝗮𝗯𝗹𝗲 𝗹𝗼𝗴𝘀
@@ -48,14 +50,26 @@ DoNotLogOutput = True
 # the code to be looped infinitely.
 DoINeedToRun = True
 
+# 𝗘𝗻𝗮𝗯𝗹𝗲 𝗼𝗿 𝗱𝗶𝘀𝗮𝗯𝗹𝗲 𝗥𝗲𝗽𝗹𝗶𝘁 𝗺𝗼𝗱𝗲
+# Default: False
+# Possible options: True, False
+
+# This decides whether PyPlace should
+# run like it is being executed from
+# the official Replit page, this
+# disables settings such as updating,
+# ignores file names and gives a 
+# warning each time you run it.
+ReplitMode = False
+
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.4 (changes every version)
+# Default: 0.5 (changes every version)
 # Possible options: any number
 
 # This is the version of PyPlace and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.4
+Version = 0.5
 
 
 # ————————————————————————————
@@ -87,14 +101,19 @@ class bcolors:
 	BOLD = '\033[1m'
 	UNDERLINE = '\033[4m'
 
-
-# For the Replit version:
-# print(f"{bcolors.WARNING}Warning:{bcolors.END} It appears you're running this on the Replit page. Not everything might work properly because of different file names! We recommend downloading PyPlace and running it for yourself.")
-
 if exists("setup.json") == True:
 	with open('setup.json') as SetupFile:
 		_data = json.load(SetupFile)
 		PyCommand = _data["PythonCommand"]
+
+FileName = f"{os.path.splitext(os.path.basename(__file__))[0]}.py"
+FileNameWarning = False
+print(FileName)
+if ReplitMode == True:
+	CheckForUpdates = False
+else:
+	if FileName.lower() != "pyplace.py":
+		FileNameWarning = True
 
 
 def log(message):
@@ -182,15 +201,23 @@ def ExecuteFile():
 		print(f"{bcolors.FAIL}Error:{bcolors.END} You do not have any applications installed! You can download them via \"Download a PyPlace app\" on the main menu.")
 		return
 
-	print(f"Applications colored {bcolors.OKCYAN}cyan{bcolors.END} are downloaded from the PyPlace Store.")
+	print(f"{bcolors.WARNING}■{bcolors.END}: Experimental application")
+	print(f"{bcolors.OKCYAN}■{bcolors.END}: Application downloaded from the PyPlace store")
+	print()
 	ItemCount = 0
 	for item in json_data["apps"]:
 		ItemCount += 1
 		if "StoreApp" in json_data['apps'][item]:
 			if json_data['apps'][item]["StoreApp"] == "true":
 				print(f"{bcolors.OKCYAN}[{ItemCount}] {json_data['apps'][item]['name']} by {json_data['apps'][item]['author']}{bcolors.END}")
+		elif "experiment" in json_data['apps'][item]:
+			if json_data['apps'][item]["experiment"] == "true":
+				print(f"{bcolors.WARNING}[{ItemCount}] {json_data['apps'][item]['name']}{bcolors.END}")
 		else:
-			print(f"[{ItemCount}] {json_data['apps'][item]['name']}")
+			if "author" in json_data['apps'][item]:
+				print(f"[{ItemCount}] {json_data['apps'][item]['name']} by {json_data['apps'][item]['author']}")
+			else:
+				print(f"[{ItemCount}] {json_data['apps'][item]['name']}")
 	
 	if ItemCount == 0:
 		print(f"{bcolors.FAIL}Error:{bcolors.END} You do not have any applications installed! You can download them via \"Download a PyPlace app\" on the main menu.")
@@ -224,6 +251,7 @@ def DownloadFile():
 	print(f"""
 [1] Link to Python file
 [2] Download from PyPlace Store
+[3] Download experiment
 [{bcolors.FAIL}c{bcolors.END}] Cancel
 """)
 	NotAnswered4 = True
@@ -235,7 +263,9 @@ def DownloadFile():
 			NotAnswered4 = False
 			URLToPythonFile = input("Please enter the direct URL to a Python file: ")
 			log("Testing URL with RegEx...")
-			RegExResult = re.search("^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$", URLToPythonFile)
+			RegExResult = re.search(
+"^(?:(?:https?|ftp):\/\/)(?:\S+(?::\S*)?@)?(?:(?!(?:10|127)(?:\.\d{1,3}){3})(?!(?:169\.254|192\.168)(?:\.\d{1,3}){2})(?!172\.(?:1[6-9]|2\d|3[0-1])(?:\.\d{1,3}){2})(?:[1-9]\d?|1\d\d|2[01]\d|22[0-3])(?:\.(?:1?\d{1,2}|2[0-4]\d|25[0-5])){2}(?:\.(?:[1-9]\d?|1\d\d|2[0-4]\d|25[0-4]))|(?:(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)(?:\.(?:[a-z\u00a1-\uffff0-9]-*)*[a-z\u00a1-\uffff0-9]+)*(?:\.(?:[a-z\u00a1-\uffff]{2,}))\.?)(?::\d{2,5})?(?:[/?#]\S*)?$", 
+URLToPythonFile)
 			if RegExResult:
 				log("The input is a URL, testing for Python file extension...")
 				FileExtensionCheck2 = URLToPythonFile[-3:]
@@ -340,7 +370,7 @@ def DownloadFile():
 
 					AppRequest = requests.get(StoreRequestJSON['apps'][item]['url'], allow_redirects=False)
 					if not AppRequest.ok:
-						print(f"{bcolors.FAIL}Error:{bcolors.END} Could not connect to the PyPlace store! Response code: {AppRequest.status_code}")
+						print(f"{bcolors.FAIL}Error:{bcolors.END} Could not connect to the file! Response code: {AppRequest.status_code}")
 						return
 					print(f"{bcolors.OKGREEN}Downloaded file!{bcolors.END}")
 
@@ -369,7 +399,7 @@ def DownloadFile():
 								f"{bcolors.FAIL}Error:{bcolors.END} A file with that name ({FileName1}) already exists!")
 							InvalidAnswer1 = True
 
-					Name = input("What do you want to call the app? ") or "PyPlace Installed Store App"
+					Name = StoreRequestJSON["apps"][item]["name"]
 
 					print(f"{bcolors.INFO}Installing Python app...{bcolors.END}")
 
@@ -393,6 +423,89 @@ def DownloadFile():
 								indent=4,
 								separators=(',', ': '))
 					print(f"{bcolors.OKGREEN}Python app installed!{bcolors.END}")
+					NotAnswered4 = False
+		elif Answer4 == "3":
+
+			ExperimentRequest = requests.get(
+				"https://cdn.dantenl.tk/pyplace/experiments.json", allow_redirects=True)
+			if not ExperimentRequest.ok:
+				print(f"{bcolors.FAIL}Error:{bcolors.END} Could not connect to the PyPlace Experiment Store! Response code: {ExperimentRequest.status_code}")
+				return
+			ExperimentRequestText = ExperimentRequest.text
+			ExperimentRequestJSON = json.loads(ExperimentRequestText)
+
+			ItemCount = 0
+			for item in ExperimentRequestJSON["apps"]:
+				ItemCount += 1
+				print(f"[{ItemCount}] {ExperimentRequestJSON['apps'][item]['name']}")
+
+			print(f"[{bcolors.FAIL}c{bcolors.END}] Cancel")
+
+			NumberExperimentNeeded = input("What number app do you want to download? ")
+
+			if NumberExperimentNeeded.lower() == "c":
+				return
+
+			ItemCount = 0
+			for item in ExperimentRequestJSON["apps"]:
+				ItemCount += 1
+				if str(ItemCount) == str(NumberExperimentNeeded):
+					print(f"{bcolors.INFO}Attempting to download {ExperimentRequestJSON['apps'][item]['name']}...{bcolors.END}")
+					log(f"Retrieving file from {ExperimentRequestJSON['apps'][item]['url']}...")
+
+					AppRequest = requests.get(ExperimentRequestJSON['apps'][item]['url'], allow_redirects=False)
+					if not AppRequest.ok:
+						print(f"{bcolors.FAIL}Error:{bcolors.END} Could not connect to the file! Response code: {AppRequest.status_code}")
+						return
+					print(f"{bcolors.OKGREEN}Downloaded file!{bcolors.END}")
+
+					InvalidAnswer1 = True
+					while InvalidAnswer1 == True:
+						FileName1 = input("What do you want to call the file? ") or "PyPlace Installed Experiment.py"
+						FileExtensionCheck4 = FileName1[-3:]
+						if FileExtensionCheck4 != ".py":
+							FileName1 = f"{FileName1}.py"
+
+						FileName1 = FileName1.replace(" ", "-")
+						RegExResult3 = re.search(
+							"""\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\>|\?|\/|\""|\;|\:|\s""", FileName1)
+						if RegExResult3:
+							FileName1 = re.sub(
+								"""\`|\~|\!|\@|\#|\$|\%|\^|\&|\*|\(|\)|\+|\=|\[|\{|\]|\}|\||\\|\'|\<|\,|\>|\?|\/|\""|\;|\:|\s""", "-", FileName1)
+							print(
+								f"{bcolors.WARNING}Warning:{bcolors.END} File name contained illegal characters. The file name is now {FileName1}")
+							InvalidAnswer1 = False
+						else:
+							InvalidAnswer1 = False
+
+						if exists(FileName1):
+							print(
+								f"{bcolors.FAIL}Error:{bcolors.END} A file with that name ({FileName1}) already exists!")
+							InvalidAnswer1 = True
+
+					Name = ExperimentRequestJSON["apps"][item]["name"]
+
+					print(f"{bcolors.INFO}Installing experiment app...{bcolors.END}")
+
+					open(FileName1, 'wb').write(AppRequest.content)
+
+					with open('applications.json') as ApplicationsFile1:
+						data3 = json.load(ApplicationsFile1)
+
+					data3["apps"].update(
+						{
+							f"Experiment: {Name}": {
+								"name": f"{Name}",
+								"file_name": f"{FileName1}",
+								"experiment": "true"
+							}
+						})
+					log("Appending to applications.json")
+					with open("applications.json", 'w') as json_file:
+						json.dump(data3, json_file,
+								indent=4,
+								separators=(',', ': '))
+					print(f"{bcolors.OKGREEN}Experiment installed!{bcolors.END}")
 					NotAnswered4 = False
 
 def Settings():
@@ -588,6 +701,11 @@ print("to get a simple overview of your other Python")
 print("applications, and it also allows you to easily")
 print("install new ones!")
 print()
+if ReplitMode == True:
+	print(f"{bcolors.WARNING}WARNING:{bcolors.END} It appears you're running this on the Replit page. Not everything might work properly because of different file names! We recommend downloading PyPlace and running it for yourself.")
+if FileNameWarning == True:
+	print(f"""{bcolors.WARNING}WARNING:{bcolors.END} It appears that you are running this from another file that is not called \"pyplace.py\".
+This means you can not correctly restore and update PyPlace. We recommend changin it to \"pyplace.py\".""")
 
 log("Checking if setup.json exists...")
 if exists("setup.json") == True:
