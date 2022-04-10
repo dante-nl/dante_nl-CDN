@@ -19,13 +19,13 @@
 # a bunch of applications at once.
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.3 (changes	every version)
+# Default: 0.4 (changes	every version)
 # Possible options:	any	number
 
 # This is the version of PyPlace - Bulk Delete and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.3
+Version = 0.4
 
 # ————————————————————————————
 
@@ -123,11 +123,13 @@ def bulk_delete(nums):
 	if exists("applications.json") == False:
 		error("You do not have any applications installed.")
 		return "Error"
-	info(f"Deleting {len(nums)} apps...")
+	items = len(nums)
+	info(f"Deleting {items} apps...")
 	RightApps = []
 	for number in nums:
-		if number == ErrorNumber:
+		if number == str(ErrorNumber):
 			print(f"{bcolors.FAIL}Error:{bcolors.END} Please delete PyPlace - Bulk Delete via the PyPlace settings instead.")
+			items -= 1
 		else:
 			current_num_app_dict = 0
 			for app in AppDict["apps"]:
@@ -143,8 +145,10 @@ def bulk_delete(nums):
 				data = json.dump(AppDict, data_file,
 									indent=4,
 									separators=(',', ': '))
-	
-	print(f"{bcolors.OKGREEN}Deleted {len(nums)} app(s)!{bcolors.END}")
+	if items == 0:
+		print(f"{bcolors.INFO}No apps to be deleted.{bcolors.END}")
+	else:
+		print(f"{bcolors.OKGREEN}Deleted {items} app(s)!{bcolors.END}")
 
 print()
 print("""————————————————————————————
@@ -160,6 +164,7 @@ update()
 
 print(f"{bcolors.WARNING}■{bcolors.END}: Experimental application")
 print(f"{bcolors.OKCYAN}■{bcolors.END}: Application downloaded from the PyPlace store")
+print(f"{bcolors.FAIL}■{bcolors.END}: The PyPlace - Bulk Delete app. This can not be deleted here.")
 print()
 
 num_app = 0
@@ -186,4 +191,5 @@ input = input("What apps do you want to delete? (seperated by a comma, so for ap
 if input.lower() == "c":
 	sys.exit(0)
 input = input.split(",")
+
 bulk_delete(input)
