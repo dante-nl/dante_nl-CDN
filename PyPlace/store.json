@@ -29,6 +29,11 @@
 			"name": "Simple Calculator",
 			"url": "https://cdn.dantenl.tk/pyplace/store%20files/calculator.py",
 			"author": "dante_nl"
+		},
+		"PyPlace Bulk Delete [BETA]": {
+			"name": "PyPlace Bulk Delete [BETA] — Delete multiple apps at once",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/PyPlace-BD-Latest.py",
+			"author": "dante_nl"
 		}
 	}
 }
