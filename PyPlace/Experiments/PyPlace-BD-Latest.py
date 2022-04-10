@@ -19,13 +19,13 @@
 # a bunch of applications at once.
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.1 (changes	every version)
+# Default: 0.2 (changes	every version)
 # Possible options:	any	number
 
 # This is the version of PyPlace - Bulk Delete and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.1
+Version = 0.2
 
 # ————————————————————————————
 
@@ -126,11 +126,14 @@ def bulk_delete(nums):
 	info(f"Deleting {len(nums)} apps...")
 	RightApps = []
 	for number in nums:
-		current_num_app_dict = 0
-		for app in AppDict["apps"]:
-			current_num_app_dict += 1
-			if str(current_num_app_dict) == str(number):
-				RightApps.append(app)
+		if number == ErrorNumber:
+			print(f"{bcolors.FAIL}Error:{bcolors.END} Please delete PyPlace - Bulk Delete via the PyPlace settings instead.")
+		else:
+			current_num_app_dict = 0
+			for app in AppDict["apps"]:
+				current_num_app_dict += 1
+				if str(current_num_app_dict) == str(number):
+					RightApps.append(app)
 
 	for RightApp in RightApps:
 		if exists(AppDict["apps"][RightApp]["file_name"]):
@@ -152,15 +155,34 @@ a bunch of applications at once.
 
 update()
 
+FileName = f"{os.path.splitext(os.path.basename(__file__))[0]}.py"
+
+print(f"{bcolors.WARNING}■{bcolors.END}: Experimental application")
+print(f"{bcolors.OKCYAN}■{bcolors.END}: Application downloaded from the PyPlace store")
+print()
+
 num_app = 0
 for item in AppDict["apps"]:
 	num_app += 1
-	print(f"[{num_app}] {AppDict['apps'][item]['name']}")
+	if AppDict["apps"][item]["file_name"] == FileName:
+		print(f"{bcolors.FAIL}[{num_app}] {AppDict['apps'][item]['name']}{bcolors.END}")
+		ErrorNumber = num_app
+	elif "StoreApp" in AppDict["apps"][item]:
+		if AppDict["apps"][item]["StoreApp"] == "true":
+			print(f"{bcolors.OKCYAN}[{num_app}] {AppDict['apps'][item]['name']}{bcolors.END}")
+	elif "experiment" in AppDict["apps"][item]:
+		if AppDict["apps"][item]["experiment"] == "true":
+			print(f"{bcolors.WARNING}[{num_app}] {AppDict['apps'][item]['name']}{bcolors.END}")
+
 
 if num_app == 0:
 	error("You do not have any applications installed!")
 	sys.exit(0)
 
+print(f"[{bcolors.FAIL}c{bcolors.END}] Cancel")
+
 input = input("What apps do you want to delete? (seperated by a comma, so for applications 1, 2 and 3 you would enter 1,2,3) ")
+if input.lower() == "c":
+	sys.exit(0)
 input = input.split(",")
 bulk_delete(input)
