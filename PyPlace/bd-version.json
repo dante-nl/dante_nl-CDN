@@ -1,4 +1,4 @@
 {
-	"version": 0.2,
-	"release_notes": "- Added more colors!"
+	"version": 0.3,
+	"release_notes": "- Fixed the updater. When you see this, it is best to reinstall this app via the PyPlace Experimental store."
 }
