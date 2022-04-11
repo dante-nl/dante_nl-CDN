@@ -88,6 +88,7 @@ def quickstart():
 
 	download("Simple Password Gen", "Simple-Password-Generator.py", StoreRequestJSON)
 	download("Calculator", "Calculator.py", StoreRequestJSON)
+	download("dictiona.py", "dictiona.py", StoreRequestJSON)
 	download("Rock, paper, scissors", "Rock-Paper-Scissors.py", StoreRequestJSON)
 	download("Hangman", "Hangman.py", StoreRequestJSON)
 	try:
