@@ -34,6 +34,11 @@
 			"name": "dictiona.py — a dictionary in Python",
 			"url": "https://cdn.dantenl.tk/pyplace/store%20files/dictiona.py",
 			"author": "dante_nl"
+		},
+		"Guess the number": {
+			"name": "Guess the number",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/guess-the-number.py",
+			"author": "dante_nl"
 		}
 	}
 }
