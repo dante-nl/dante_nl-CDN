@@ -63,13 +63,13 @@ DoINeedToRun = True
 ReplitMode = False
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.5 (changes every version)
+# Default: 0.6 (changes every version)
 # Possible options: any number
 
 # This is the version of PyPlace and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.5
+Version = 0.6
 
 
 # ————————————————————————————
@@ -533,17 +533,26 @@ def Settings():
 				return
 
 			log("Reading applications.json...")
-			print(
-				f"Applications colored {bcolors.OKCYAN}cyan{bcolors.END} are downloaded from the PyPlace Store.")
+			print(f"{bcolors.WARNING}■{bcolors.END}: Experimental application")
+			print(f"{bcolors.OKCYAN}■{bcolors.END}: Application downloaded from the PyPlace store")
+
 			ItemCount = 0
 			for item in json_data["apps"]:
 				ItemCount += 1
 				if "StoreApp" in json_data['apps'][item]:
-					if json_data['apps'][item]["StoreApp"] == "true":
-						print(
-							f"{bcolors.OKCYAN}[{ItemCount}] {json_data['apps'][item]['name']} by {json_data['apps'][item]['author']}{bcolors.END}")
+					if "StoreApp" in json_data['apps'][item]:
+						if json_data['apps'][item]["StoreApp"] == "true":
+							print(f"{bcolors.OKCYAN}[{ItemCount}] {json_data['apps'][item]['name']} by {json_data['apps'][item]['author']}{bcolors.END}")
+				elif "experiment" in json_data['apps'][item]:
+					if json_data['apps'][item]["experiment"] == "true":
+						print(f"{bcolors.WARNING}[{ItemCount}] {json_data['apps'][item]['name']}{bcolors.END}")
 				else:
-					print(f"[{ItemCount}] {json_data['apps'][item]['name']}")
+					if "author" in json_data['apps'][item]:
+						print(f"[{ItemCount}] {json_data['apps'][item]['name']} by {json_data['apps'][item]['author']}")
+					else:
+						print(f"[{ItemCount}] {json_data['apps'][item]['name']}")
+			
+			print(f"[{bcolors.INFO}i{bcolors.END}] Looking to delete multiple apps at once? Enter \"i\"")
 	
 			if ItemCount == 0:
 				print(f"{bcolors.FAIL}Error:{bcolors.END} You do not have any applications installed! You can download them via \"Download a PyPlace app\" on the main menu.")
@@ -552,6 +561,18 @@ def Settings():
 			print(f"[{bcolors.FAIL}c{bcolors.END}] Cancel")
 			NumberAppNeeded = input("What number app do you want to delete? ")
 			if NumberAppNeeded.lower() == "c":
+				NotAnswered = False
+				return
+			elif NumberAppNeeded.lower() == "i":
+				print(f"""{bcolors.INFO}{bcolors.BOLD}Looking to delete multiple apps at once?{bcolors.END}
+
+You can download \"PyPlace - Bulk Delete\" fron the PyPlace Experiment Store right now.
+Just enter \"2\" at the home screen (for \"Download a PyPlace app\"), and then enter \"3\"
+to open the PyPlace Expirements Store!
+
+{bcolors.WARNING}NOTE:{bcolors.END} This is currently in beta, and things might not work properly.
+""")
+				input("Press [ENTER] to return to the home menu. ")
 				NotAnswered = False
 				return
 			ItemCount = 0
