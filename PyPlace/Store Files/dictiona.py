@@ -37,13 +37,13 @@ RunScript = True
 while RunScript == True:
 
 	query = input("Enter word: ")
-
-	print(f"{bcolors.BOLD}DEFINITION:{bcolors.END} \n")
+	query = query.replace(" ", "%20")
 
 	urlfrmt = "https://dictionaryapi.com/api/v3/references/collegiate/json/"+query+"?key=" + key
 	response = urllib.request.urlopen(urlfrmt)
 	WordJSON = json.load(response)
 	SearchForExamples = True
+	print(f"{bcolors.BOLD}DEFINITION:{bcolors.END} \n")
 	try:
 		for meaning in WordJSON:
 			definitions = meaning['shortdef']
