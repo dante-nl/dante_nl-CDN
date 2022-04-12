@@ -39,6 +39,11 @@
 			"name": "Guess the number",
 			"url": "https://cdn.dantenl.tk/pyplace/store%20files/guess-the-number.py",
 			"author": "dante_nl"
+		},
+		"Higher - Lower": {
+			"name": "Higher - Lower (installer)",
+			"url": "https://cdn.dantenl.tk/pyplace/store%20files/higherlowerinstaller.py",
+			"author": "dante_nl"
 		}
 	}
 }
