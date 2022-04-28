@@ -75,6 +75,33 @@
                     "author_id": 806141455616704573
                 }
             }
+        },
+        "2GI7M": {
+            "question": "tets",
+            "author_id": "618082876730376202",
+            "message_id": "969187516978724924",
+            "author": "dante_nl#1234",
+            "answers": {
+                "mx8Q9": {
+                    "answer": "gehe",
+                    "author_id": 806141455616704573
+                }
+            }
+        },
+        "58PbL": {
+            "question": "test",
+            "author_id": "618082876730376202",
+            "message_id": "none",
+            "author": "dante_nl#1234",
+            "answers": {
+                "94VaA": {
+                    "answer": "Test",
+                    "author_id": 806141455616704573,
+                    "author": "dante_nl 2#4034"
+                }
+            },
+            "deleted": "true",
+            "deleted_reason": "author"
         }
     },
     "all_deleted_questions_clears": 4,
