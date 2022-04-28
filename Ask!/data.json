@@ -28,11 +28,13 @@
         "jZ1z2": {
             "question": "jejej",
             "author_id": "618082876730376202",
-            "message_id": "965629406494220428",
+            "message_id": "none",
             "question_history": [
                 "question",
                 "ejejk"
-            ]
+            ],
+            "deleted": "true",
+            "deleted_reason": "author"
         },
         "7l5XQ": {
             "question": "This is an example!",
@@ -44,23 +46,27 @@
         "91wig": {
             "question": "Example question",
             "author_id": "806141455616704573",
-            "message_id": "965977198400000101",
+            "message_id": "none",
             "answers": {
                 "8B4oX": {
                     "answer": "Here's an example answer",
                     "author_id": 618082876730376202
                 }
-            }
+            },
+            "deleted": "true",
+            "deleted_reason": "moderator"
         },
         "10MGB": {
             "question": "test from mobile device",
             "author_id": "618082876730376202",
-            "message_id": "966051900661325884"
+            "message_id": "none",
+            "deleted": "true",
+            "deleted_reason": "author"
         },
         "50pOk": {
             "question": "This is a test for the web viewer",
             "author_id": "618082876730376202",
-            "message_id": "969182276942438400",
+            "message_id": "none",
             "answers": {
                 "c8m8G": {
                     "answer": "Answer 1",
@@ -74,19 +80,23 @@
                     "answer": "Answer 3",
                     "author_id": 806141455616704573
                 }
-            }
+            },
+            "deleted": "true",
+            "deleted_reason": "author"
         },
         "2GI7M": {
             "question": "tets",
             "author_id": "618082876730376202",
-            "message_id": "969187516978724924",
+            "message_id": "none",
             "author": "dante_nl#1234",
             "answers": {
                 "mx8Q9": {
                     "answer": "gehe",
                     "author_id": 806141455616704573
                 }
-            }
+            },
+            "deleted": "true",
+            "deleted_reason": "author"
         },
         "58PbL": {
             "question": "test",
@@ -106,46 +116,65 @@
         "test": {
             "question": "This question is for testing purposes",
             "author_id": "806141455616704573",
-            "message_id": "969270985691910144"
-        },
-        "mod_del": {
-            "question": "This question is deleted by a moderator",
-            "author_id": "806141455616704573",
             "message_id": "none",
             "deleted": "true",
             "deleted_reason": "moderator"
         },
-        "self_del": {
-            "question": "This question is deleted by the author",
+        "Q2iw2": {
+            "question": "test",
             "author_id": "806141455616704573",
+            "message_id": "969273717408550974",
+            "author": "dante_nl 2#4034",
+            "answers": {
+                "Rh92v": {
+                    "answer": "tet",
+                    "author_id": 618082876730376202,
+                    "author": "dante_nl#1234"
+                }
+            }
+        },
+        "mod_del": {
+            "question": "This question has been deleted by a moderator",
+            "author_id": "618082876730376202",
             "message_id": "none",
+            "author": "dante_nl#1234",
+            "deleted": "true",
+            "deleted_reason": "moderator"
+        },
+        "self_del": {
+            "question": "This question has been deleted by the author",
+            "author_id": "618082876730376202",
+            "message_id": "none",
+            "author": "dante_nl#1234",
             "deleted": "true",
             "deleted_reason": "author"
         },
-        "no_answ": {
+        "no_ans": {
             "question": "This question has no answers",
-            "author_id": "806141455616704573",
-            "message_id": "969271415058604052"
+            "author_id": "618082876730376202",
+            "message_id": "969276207931731999",
+            "author": "dante_nl#1234"
         },
         "with_ans": {
-            "question": "This question does have answers",
-            "author_id": "806141455616704573",
-            "message_id": "969271493655674900",
+            "question": "This question has answers",
+            "author_id": "618082876730376202",
+            "message_id": "969276416023752796",
+            "author": "dante_nl#1234",
             "answers": {
-                "WWq93": {
+                "h98px": {
                     "answer": "This is the first answer",
-                    "author_id": 618082876730376202,
-                    "author": "dante_nl#1234"
+                    "author_id": 806141455616704573,
+                    "author": "dante_nl 2#4034"
                 },
-                "nC34D": {
+                "7NGa0": {
                     "answer": "This is the second answer",
-                    "author_id": 618082876730376202,
-                    "author": "dante_nl#1234"
+                    "author_id": 806141455616704573,
+                    "author": "dante_nl 2#4034"
                 },
-                "m1O7w": {
-                    "answer": "And this will be the third answer",
-                    "author_id": 618082876730376202,
-                    "author": "dante_nl#1234"
+                "Zm61Q": {
+                    "answer": "And this is the final one; the third! :D",
+                    "author_id": 806141455616704573,
+                    "author": "dante_nl 2#4034"
                 }
             }
         }
