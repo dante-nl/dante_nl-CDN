@@ -177,6 +177,15 @@
                     "author": "dante_nl 2#4034"
                 }
             }
+        },
+        "edit_test": {
+            "question": "This question is edited",
+            "author_id": "618082876730376202",
+            "message_id": "969279925079121960",
+            "author": "dante_nl#1234",
+            "question_history": [
+                "This question will be edited"
+            ]
         }
     },
     "all_deleted_questions_clears": 4,
