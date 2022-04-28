@@ -102,6 +102,52 @@
             },
             "deleted": "true",
             "deleted_reason": "author"
+        },
+        "test": {
+            "question": "This question is for testing purposes",
+            "author_id": "806141455616704573",
+            "message_id": "969270985691910144"
+        },
+        "mod_del": {
+            "question": "This question is deleted by a moderator",
+            "author_id": "806141455616704573",
+            "message_id": "none",
+            "deleted": "true",
+            "deleted_reason": "moderator"
+        },
+        "self_del": {
+            "question": "This question is deleted by the author",
+            "author_id": "806141455616704573",
+            "message_id": "none",
+            "deleted": "true",
+            "deleted_reason": "author"
+        },
+        "no_answ": {
+            "question": "This question has no answers",
+            "author_id": "806141455616704573",
+            "message_id": "969271415058604052"
+        },
+        "with_ans": {
+            "question": "This question does have answers",
+            "author_id": "806141455616704573",
+            "message_id": "969271493655674900",
+            "answers": {
+                "WWq93": {
+                    "answer": "This is the first answer",
+                    "author_id": 618082876730376202,
+                    "author": "dante_nl#1234"
+                },
+                "nC34D": {
+                    "answer": "This is the second answer",
+                    "author_id": 618082876730376202,
+                    "author": "dante_nl#1234"
+                },
+                "m1O7w": {
+                    "answer": "And this will be the third answer",
+                    "author_id": 618082876730376202,
+                    "author": "dante_nl#1234"
+                }
+            }
         }
     },
     "all_deleted_questions_clears": 4,
