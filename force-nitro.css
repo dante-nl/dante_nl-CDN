@@ -1,0 +1,72 @@
+.defaultColor-HXu-5n {
+	font-size: 0;
+	color: red
+}
+
+.defaultColor-HXu-5n::after {
+	content: "BUY NITRO!!";
+	font-size: 50px;
+}
+
+.featureGrid-SSlfD0 {
+	display: none
+}
+
+.marketingRefreshTitle-UaHKpk {
+	font-size: 0;
+	color: red
+}
+
+.marketingRefreshTitle-UaHKpk::after {
+	content: "If you do not upgrade, serious things will happen!";
+	font-size: 25px
+}
+
+.marketingRefreshSubtitle-17I8Dd {
+	font-size: 0;
+	color: red
+}
+
+.marketingRefreshSubtitle-17I8Dd::after {
+	content: "If you do not upgrade, a Nitro Inspector will come to your house to check for a valid Nitro suscription. If you do not have one, you risk a life*!";
+	font-size: 16px
+}
+
+.buttonText-1c-l_x {
+	font-size: 0;
+}
+
+.buttonText-1c-l_x::after {
+	font-size: 16px;
+	content: "Continue living";
+}
+
+.colorPrimary-2AuQVo:enabled {
+	background-color: #ED4245 !important
+}
+
+.giftIcon-25Wlbr {
+	display: none
+}
+
+.giftButton-2RVWns {
+	font-size: 0;
+}
+
+.giftButton-2RVWns::after {
+	font-size: 16px;
+	content: "Activate bad things"
+}
+
+.marketingRefreshSectionTier1-1chtWC {
+	display: none
+}
+
+.heroBody-20fY29 {
+	font-size: 0
+}
+
+.heroBody-20fY29::after {
+	font-size: 16px;
+	content: "Buy Nitro to continue living ;)"
+}
