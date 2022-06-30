@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<rss version="2.0">
+	<channel>
+	<title>MyNews RSS Feed</title>
+	<link>http://www.example.com/</link>
+	<description>The latest news for MyNews</description>
+	<lastBuildDate>Thu, 30 Jun 2022 16:35:00 GMT</lastBuildDate>
+	<language>en-us</language>
+
+	<item>
+		<title>Welcome to MyNews</title>
+		<link>/news/1</link>
+		<guid>/news/1</guid>
+		<pubDate>Thu, 30 Jun 2022 16:35:00 GMT</pubDate>
+		<description>[CDATA[ This is the first thingy! ]]</description>
+	</item>
+
+	</channel>
+</rss>
