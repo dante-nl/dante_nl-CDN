@@ -1,4 +1,4 @@
 {
-	"version": 0.7,
-	"release_notes": "- Added a way to cancel the process for selecting an app."
+	"version": 0.6,
+	"release_notes": "- Undone a mistake"
 }
