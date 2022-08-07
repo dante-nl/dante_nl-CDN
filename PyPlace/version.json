@@ -1,4 +1,4 @@
 {
-	"version": 0.6,
-	"release_notes": "- Added a note about PyPlace — Bulk Delete when deleting an app via the PyPlace settings"
+	"version": 0.7,
+	"release_notes": "- Added a way to cancel the process for selecting an app."
 }
