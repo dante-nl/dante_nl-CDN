@@ -64,13 +64,13 @@ DoINeedToRun = True
 ReplitMode = False
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.7 (changes every version)
+# Default: 0.6 (changes every version)
 # Possible options: any number
 
 # This is the version of PyPlace and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.7
+Version = 0.6
 
 
 # ————————————————————————————
@@ -248,9 +248,6 @@ def ExecuteFile():
 			else:
 				print(
 					f"{bcolors.FAIL}Error:{bcolors.END} {PyCommand} {json_data['apps'][item]['file_name']} does not exist in the current folder.")
-	if ItemCount == ItemCount2 and NumberAppNeeded.lower() != "c":
-		print(f"{bcolors.FAIL}Error:{bcolors.END} That is not a valid number. You can enter {bcolors.BOLD}c{bcolors.END} to go back to the main menu.")
-		ExecuteFile()
 
 
 def DownloadFile():
