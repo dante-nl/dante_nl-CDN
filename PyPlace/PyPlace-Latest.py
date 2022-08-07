@@ -48,6 +48,7 @@ DoNotLogOutput = True
 # This is mainly for stopping PyPlace
 # while it is executing, and for allowing
 # the code to be looped infinitely.
+# NOTE: This should not be touched
 DoINeedToRun = True
 
 # 𝗘𝗻𝗮𝗯𝗹𝗲 𝗼𝗿 𝗱𝗶𝘀𝗮𝗯𝗹𝗲 𝗥𝗲𝗽𝗹𝗶𝘁 𝗺𝗼𝗱𝗲
@@ -63,13 +64,13 @@ DoINeedToRun = True
 ReplitMode = False
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
-# Default: 0.6 (changes every version)
+# Default: 0.7 (changes every version)
 # Possible options: any number
 
 # This is the version of PyPlace and is
 # absolutely not recommended to change,
 # except for testing purposes.
-Version = 0.6
+Version = 0.7
 
 
 # ————————————————————————————
@@ -223,11 +224,13 @@ def ExecuteFile():
 		print(f"{bcolors.FAIL}Error:{bcolors.END} You do not have any applications installed! You can download them via \"Download a PyPlace app\" on the main menu.")
 		return
 
+	print(f"[{bcolors.FAIL}c{bcolors.END}] Cancel")
+
 	NumberAppNeeded = input("What number app do you want to open? ")
-	ItemCount = 0
+	ItemCount2 = 0
 	for item in json_data["apps"]:
-		ItemCount += 1
-		if str(ItemCount) == str(NumberAppNeeded):
+		ItemCount2 += 1
+		if str(ItemCount2) == str(NumberAppNeeded):
 			print(
 				f"{bcolors.INFO}Attempting to run {json_data['apps'][item]['file_name']}...{bcolors.END}")
 
@@ -245,6 +248,9 @@ def ExecuteFile():
 			else:
 				print(
 					f"{bcolors.FAIL}Error:{bcolors.END} {PyCommand} {json_data['apps'][item]['file_name']} does not exist in the current folder.")
+	if ItemCount == ItemCount2 and NumberAppNeeded.lower() != "c":
+		print(f"{bcolors.FAIL}Error:{bcolors.END} That is not a valid number. You can enter {bcolors.BOLD}c{bcolors.END} to go back to the main menu.")
+		ExecuteFile()
 
 
 def DownloadFile():
@@ -593,64 +599,71 @@ to open the PyPlace Expirements Store!
 								separators=(',', ': '))
 			print(f"{bcolors.OKGREEN}Deleted {AppName}!{bcolors.END}")
 			NotAnswered = False
+
 		elif Answer == "2":
-			if exists("setup.json") == False:
-				print(f"{bcolors.FAIL}Error:{bcolors.END} You do not have a setup.json file! Please {bcolors.BOLD}restart PyPlace to set it up!{bcolors.END}")
-				sys.exit(0)
+			if ReplitMode != True:
+				if exists("setup.json") == False:
+					print(f"{bcolors.FAIL}Error:{bcolors.END} You do not have a setup.json file! Please {bcolors.BOLD}restart PyPlace to set it up!{bcolors.END}")
+					sys.exit(0)
 
-			NewPythonCommand = input("What do you want the new command to be? Leave empty to set to default (python3). ") or "python3"
+				NewPythonCommand = input("What do you want the new command to be? Leave empty to set to default (python3). ") or "python3"
 
-			SetupFile = open("setup.json", "r")
-			json_object = json.load(SetupFile)
-			SetupFile.close()
-			log(json_object)
+				SetupFile = open("setup.json", "r")
+				json_object = json.load(SetupFile)
+				SetupFile.close()
+				log(json_object)
 
-			json_object["PythonCommand"] = NewPythonCommand
-			SetupFile = open("setup.json", "w")
-			json.dump(json_object, SetupFile)
-			SetupFile.close()
+				json_object["PythonCommand"] = NewPythonCommand
+				SetupFile = open("setup.json", "w")
+				json.dump(json_object, SetupFile)
+				SetupFile.close()
 
-			print(f"{bcolors.OKGREEN}Command updated to {NewPythonCommand}!{bcolors.END}")
-			NotAnswered = False
+				print(f"{bcolors.OKGREEN}Command updated to {NewPythonCommand}!{bcolors.END}")
+				NotAnswered = False
+			else:
+				print(f"{bcolors.FAIL}Error:{bcolors.END} This is not available when PyPlace is executed on Replit. {bcolors.BOLD}You can download PyPlace instead{bcolors.END}")
 
 		elif Answer == "3":
-			NotAnswered1 = True
-			while NotAnswered1 == True:
-				Answer1 = input("Are you sure you want to restore to the latest version published online? (y/n) ")
-				if Answer1 == "y":
-					NotAnswered1 = False
-					print(f"{bcolors.INFO}Downloading latest version of PyPlace...{bcolors.END}")
-					log("Retrieving latest version of PyPlace...")
-					r = requests.get(
-						"https://cdn.dantenl.tk/PyPlace/PyPlace-Latest.py", allow_redirects=True)
-					if not r.ok:
-						print(
-							f"{bcolors.FAIL}Error:{bcolors.END} Could not get the PyPlace file! Status code: {r.status_code}")
-						return
-					log("Updating main PyPlace file")
-					open('PyPlace.py', 'wb').write(r.content)
-					print(
-						f"{bcolors.OKGREEN}The latest version of PyPlace is now ready in {bcolors.BOLD}PyPlace.py!{bcolors.END}")
-					NotAnswered2 = True
-					while NotAnswered2 == True:
-						Answer2 = input("Would you like to run it? (y/n) ")
-						Answer2 = Answer2.lower()
-						if Answer2 == "y":
+			if ReplitMode != True:
+				NotAnswered1 = True
+				while NotAnswered1 == True:
+					Answer1 = input("Are you sure you want to restore to the latest version published online? (y/n) ")
+					if Answer1 == "y":
+						NotAnswered1 = False
+						print(f"{bcolors.INFO}Downloading latest version of PyPlace...{bcolors.END}")
+						log("Retrieving latest version of PyPlace...")
+						r = requests.get(
+							"https://cdn.dantenl.tk/PyPlace/PyPlace-Latest.py", allow_redirects=True)
+						if not r.ok:
 							print(
-								f"{bcolors.INFO}Attempting to run PyPlace.py...{bcolors.END}")
-							os.system(f"{PyCommand} PyPlace.py")
-							NotAnswered2 = False
-							sys.exit(1)
-						elif Answer2 == "n":
-							print(f"Continuing with current version. {bcolors.BOLD}NOTE:{bcolors.END} Next time you start PyPlace.py, it will be on the latest version!")
-							NotAnswered2 = False
+								f"{bcolors.FAIL}Error:{bcolors.END} Could not get the PyPlace file! Status code: {r.status_code}")
 							return
-						else:
-							print(
-								f"{bcolors.FAIL}Error:{bcolors.END} I'm not sure what you mean with \"{Answer2}\".")
-				elif Answer1 == "n":
-					NotAnswered1 = False
-					NotAnswered = False
+						log("Updating main PyPlace file")
+						open('PyPlace.py', 'wb').write(r.content)
+						print(
+							f"{bcolors.OKGREEN}The latest version of PyPlace is now ready in {bcolors.BOLD}PyPlace.py!{bcolors.END}")
+						NotAnswered2 = True
+						while NotAnswered2 == True:
+							Answer2 = input("Would you like to run it? (y/n) ")
+							Answer2 = Answer2.lower()
+							if Answer2 == "y":
+								print(
+									f"{bcolors.INFO}Attempting to run PyPlace.py...{bcolors.END}")
+								os.system(f"{PyCommand} PyPlace.py")
+								NotAnswered2 = False
+								sys.exit(1)
+							elif Answer2 == "n":
+								print(f"Continuing with current version. {bcolors.BOLD}NOTE:{bcolors.END} Next time you start PyPlace.py, it will be on the latest version!")
+								NotAnswered2 = False
+								return
+							else:
+								print(
+									f"{bcolors.FAIL}Error:{bcolors.END} I'm not sure what you mean with \"{Answer2}\".")
+					elif Answer1 == "n":
+						NotAnswered1 = False
+						NotAnswered = False
+			else:
+				print(f"{bcolors.FAIL}Error:{bcolors.END} This is not available when PyPlace is executed on Replit. {bcolors.BOLD}You can download PyPlace instead{bcolors.END}")
 
 		elif Answer == "4":
 			NotAnswered = False
