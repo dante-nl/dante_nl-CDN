@@ -20,7 +20,7 @@
 
 # 𝗖𝘂𝗿𝗿𝗲𝗻𝘁 𝘃𝗲𝗿𝘀𝗶𝗼𝗻
 # Default: 0.1 (changes	every version)
-# Possible options:	any	number
+# Possible options: any number
 
 # This is the version of PyPlace - Bulk Delete and is
 # absolutely not recommended to change,
