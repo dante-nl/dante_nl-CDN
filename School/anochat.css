@@ -52,6 +52,9 @@ body {
 	background: var(--background-color);
 	background: var(--background-gradient);
 	background-repeat: no-repeat;
+
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 /* .gradient {
